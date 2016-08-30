@@ -1,0 +1,31 @@
+h1{
+    width: 960px;
+    margin-left: 50%;
+    width: 265px;
+    font-size: 20px;
+    margin-top: 30px;
+    font-weight: bold;
+    margin-bottom: 100px;
+}
+
+div{
+     margin-left: 15%;
+}
+ul{
+
+     position: relative;
+     float: left;
+}
+img{
+     height: 40px;
+     width: 40px;
+     margin: 30px;
+     background: #333333;
+}
+.txt{
+     position: absolute;
+     width: 100px;
+     height: 10px;
+     color: #ffffff;
+     background: #234556;
+}

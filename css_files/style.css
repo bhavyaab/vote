@@ -10,22 +10,36 @@ h1{
 
 div{
      margin-left: 15%;
+     position: relative;
 }
 ul{
-
-     position: relative;
      float: left;
+     outline: solid 3px #444;
+}
+li{
+     list-style-type: none;
 }
 img{
-     height: 40px;
-     width: 40px;
+     height: 150px;
+     width: 200px;
      margin: 30px;
      background: #333333;
 }
-.txt{
+.myChart{
+     display: block;
+     width: 300px;
+     height: 300px;
+}
+
+#chartjs-hidden{
+     width: 400px;
+     display: block;
+     border: 2px;
+     height: 1px;
+     margin: 0 auto;
      position: absolute;
-     width: 100px;
-     height: 10px;
-     color: #ffffff;
-     background: #234556;
+     left: 0px;
+     right: 0px;
+     top: 0px;
+     bottom: 0px;
 }

@@ -4,70 +4,117 @@ var img = ['img/bag.jpg', 'img/banana.jpg', 'img/bathroom.jpg', 'img/boots.jpg',
 //Defined an object to set the property of each object and assign two property click and view to zero.
 var click = 0;
 var view = 0;
+var flag = true;
 function Images_obj(name, path){
   this.name = name;
   this.path = path;
   this.click = click;
   this.view = view;
 }
-//generate an array of image and its property
+//generate an array of image and its name property
 var images = [];
 for(var i = 0; i < img.length; i++){
   images.push(new Images_obj(img[i].split('.')[0].split('/')[1], img[i]));
 }
 
-//generate a random number between zero and image.length
-function randomNum() {
-  return Math.floor((Math.random() * images.length));
-}
+//generate a random number between zero and image.length but it will remove the element that been recentaly displayed
+var redo = 0;
+ // [lbl] start:
+
+  function randomNum() {
+    var num = Math.floor((Math.random() * images.length));
+    var x = (num === recent_display[0] || num === recent_display[1] || num === recent_display[2] || num === same_time[0]) ? randomNum() : num;
+
+    same_time = [];
+    return(x);
+  };
+
 
 //create function for invoking images and its name to dom.
-
-function DisplayContent(){
-  var i = randomNum();
-  console.log(i);
-  var div = document.getElementById('img-1');
-  var ul = document.createElement('ul');
-  var li = document.createElement('li');
-  ul.innerHTML = 'li';
-  li.innerHTML = '<img src ="' + images[i].path + '" </li>' + '<li>' + images[i].name;
-  div.appendChild(li);
-
-//add eventListner for click and hover
-
-  ul.addEventListener('onmouseover', mouse_over());
-  function mouse_over() {
-    ul.innerHTML = images[i].view++;
-    console.log(images[i].view);
-    return images[i].view;
+  var same_time = [];
+  function displayContent(){
+    var i = randomNum();          //random number should not be equal to recent_display array index.
+    var div = document.getElementById('img-1');
+    var ul = document.createElement('ul');
+    var li = document.createElement('li');
+    ul.innerHTML = 'li';
+    li.innerHTML = '<img id ="' + i + '"  src = "' + images[i].path + '"> </li>' + '<li>' + images[i].name;
+    div.appendChild(li);
+    console.log('id-start = ' + document.getElementsByTagName('img')[0].id);
+    same_time.push(document.getElementsByTagName('img')[0].id);
   };
-
-  ul.addEventListener('click', click());
-  function click(){
-    ul.innerHTML = images[i].click++;
-    console.log(images[i].click);
-    return images[i].click;
-  };
-}
 //three times and then pass it to the array to get that index object
 //fetch the object name and images and display to the DOM
-function Take_vote() {
-  for(i = 0; i < 3; i++){
-    new DisplayContent();
+//add eventListner for click and hover
+
+  var recent_display = [];
+  function New_function(){
+  for(var j = 0; j < 3; j++){
+    displayContent();
+    recent_display.push(document.getElementsByTagName('img')[j].id);
+
+    document.getElementsByTagName('img')[j].addEventListener('click', click_fun); //click event is been generated
+    function click_fun(event){
+      images[event.target.id].click++;
+      document.getElementById('img-1').innerHTML = '';  //empty the dom.
+      recent_display = [];
+      console.log(recent_display);  //empty the array which contains the element info
+      console.log('click = ' + images[event.target.id].click + ' id= ' + event.target.id);
+      if(redo <= 10){
+        redo++;
+        new New_function();  //calling the whole loop again
+      } else {
+          new Data();
+          new CreateChart();
+        console.log('data - '+ data_view);
+      };
+    };
+
+    document.getElementsByTagName('img')[j].addEventListener('mouseover', mouse_over);
+    function mouse_over(event){
+      images[event.target.id].view++;
+      console.log('view = ' + images[event.target.id].view + ' id= ' + event.target.id);
+    };
   };
-  document.getElementById('img-1').addEventListener('click', hide());
-  function hide(){
-    display: none;
-  };
+  }
+
+new New_function();
+// create array for result
+//creating data array;
+
+var data_view = [];
+var data_click = [];
+var data_name = [];
+function Data(){
+for(var i = 0; i < images.length; i++){
+    data_name.push(images[i].name);
+    data_view.push(images[i].view);
+    data_click.push(images[i].click);
 };
-
-new Take_vote();
-
-
-
-
-
-
-
-
-// display result in table
+};
+//create graph
+function CreateChart(){
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+     type: 'bar',
+     data: {
+          labels: data_name,
+          datasets: [{
+               label: '# of vote',
+               data: data_click,
+               backgroungColor: ['black'],
+               borderColor: ['red'],
+               borderWidth: 2
+          }]
+     },
+     options:{
+          scales:{
+               yAxis:[{
+                    ticks:{
+                         beginAtZero: true,
+                    }
+               }]
+          }
+     }
+});
+}

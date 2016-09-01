@@ -1,6 +1,6 @@
 
 //put every single img in and array
-var img = ['img/bag.jpg', 'img/banana.jpg', 'img/bathroom.jpg', 'img/boots.jpg', 'img/breakfast.jpg', 'img/bubblegum.jpg', 'img/chair.jpg', 'img/chair.jpg', 'img/cthulhu.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg', 'img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/water-can.jpg', 'img/wine-glass.jpg'];
+var img = ['img/bag.jpg', 'img/banana.jpg', 'img/bathroom.jpg', 'img/boots.jpg', 'img/breakfast.jpg', 'img/bubblegum.jpg', 'img/chair.jpg', 'img/cthulhu.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg', 'img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/water-can.jpg', 'img/wine-glass.jpg'];
 //Defined an object to set the property of each object and assign two property click and view to zero.
 var click = 0;
 var view = 0;
@@ -138,8 +138,8 @@ function liked_item(){
 // save todo items to localStorage
 function save(){
   new Data();
-  new liked_item();
-  list.push('Most liked items   ' + likedItem);
+  new liked_item;
+  list.push('Most liked items:   ' + likedItem);
   localStorage.list = list;
   console.log('browser:', list);
   console.log('localStorage:', localStorage.list);
@@ -147,9 +147,9 @@ function save(){
 
 // append items to the dom & reset text input value
 function create() {
-  var x = JSON.stringify(liked_item());
+  // var x = JSON.stringify(liked_item());
   var item = document.createElement('li');
-  item.appendChild(document.createTextNode('Most liked item - ' + x));
+  item.appendChild(document.createTextNode('Most liked item:  ' + likedItem));
   line.appendChild(item);
   x = 0;
 }

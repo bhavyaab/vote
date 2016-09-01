@@ -1,3 +1,8 @@
+body{
+     height: 800px;
+     width: 1000px;
+     margin: 0 auto;
+}
 h1{
     margin: 0 auto;
     text-align: center;
@@ -57,6 +62,9 @@ canvas{
 .dropdown {
     position: relative;
     display: inline-block;
+    font-family: helvetica;
+    z-index: 99;
+    margin-left: 440px;
 }
 
 #line {
@@ -65,6 +73,7 @@ canvas{
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    width: 250px;
 }
 
 #line li {
@@ -81,4 +90,5 @@ canvas{
 }
 
 .dropdown:hover .dropbtn {
+     background-color: #666;
 }

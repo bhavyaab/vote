@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
      <head>
-          <link rel="stylesheet" href="css_files/reset_style.css">
-          <link rel="stylesheet" href="css_files/style.css">
+          <link rel="stylesheet" href="css/reset_style.css">
+          <link rel="stylesheet" href="css/style.css">
           <script src="chart.js"></script>
           <title>Vote</title>
      </head>
      <body>
-          <h1>Start Voting</h1>
+          <!-- <button onclick="startFunction()">Try it</button> -->
+          <h1>Welcome to vote!!</h1>
+          <div class="dropdown">
+            <button class="dropbtn">History</button>
+              <div id='line'></div>
+         </div>
           <div id="img-1"></div>
-          <canvas id="myChart" width="10" height="10"></canvas>
+          <canvas id="voteChart" width="500" height="500" margin-left="0 auto"></canvas>
      </body>
 
      <script src="app.js"></script>

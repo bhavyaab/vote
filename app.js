@@ -32,8 +32,6 @@ function displayContent(){
   var i = randomNum();          //random number should not be equal to recentDisplay array index.
   var div = document.getElementById('img-1');
   var ul = document.createElement('ul');
-    // var li = document.createElement('li');
-    // ul.innerHTML = 'li';
   ul.innerHTML = '<li><img id ="' + i + '"  src = "' + images[i].path + '"> </li>' + '<li>' + images[i].name + '</li>';
   div.appendChild(ul);
   sameTime.push(i);

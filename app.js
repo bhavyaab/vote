@@ -123,7 +123,7 @@ if (localStorage.list) {
 }
 //generate mostliked item name
 var likedItem;
-function likedItem(){
+function LkdItem(){
   var x = 0;
   for(i = 0; i < dataClick.length; i++){
     if(dataClick[i] > x){
@@ -136,7 +136,7 @@ function likedItem(){
 // save todo items to localStorage
 function save(){
   new Data();
-  new likedItem;
+  new LkdItem;
   list.push('Most liked items:   ' + likedItem);
   localStorage.list = list;
   console.log('browser:', list);

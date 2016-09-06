@@ -41,7 +41,7 @@ function displayContent(){
 //add eventListner for click and hover
 
 var recentDisplay = [];
-function NewFunction(){
+function DisplayImages(){
   for(var j = 0; j < 3; j++){
     displayContent();
     recentDisplay.push(document.getElementsByTagName('img')[j].id);
@@ -52,7 +52,7 @@ function NewFunction(){
       recentDisplay = [];  //empty the array which contains the element info
       if(redo <= 10){
         redo++;
-        new NewFunction();  //calling the whole loop again
+        new DisplayImages();  //calling the whole loop again
         sameTime = []; //reseting the value of random number
       } else {
         document.getElementsByTagName('h1').innerHTML = '';
@@ -112,7 +112,7 @@ function CreateChart(){
     }
   });
 }
-new NewFunction();
+new DisplayImages();
 //////////////////////////////////////save mostliked item to the localStorage////////////////////////
 var line = document.getElementById('line');
 //check if local storage have list of privious
